@@ -73,6 +73,46 @@
         <button id="shareofmine" type="button" class="btn btn-primary">分享我的</button>
     </footer>
 
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="shareModalLabel">分享</h4>
+                </div>
+                <div class="modal-body">
+                    <input id="article-title" tpye="text" class="form-control" placeholder="标题">
+                    <select id="article-label" class="form-control">
+                        <option value="cat">猫🐱</option>
+                        <option value="dog">狗🐶</option>
+                        <option value="bird">鸟🐦</option>
+                    </select>
+                    <textarea id="article-content" class="form-control" placeholder="你分享的内容"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                    <button id="submit" type="button" class="btn btn-primary">确认</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="lintModal" tabindex="-1" role="dialog" aria-labelledby="lintModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="lintModalLabel">提示</h4>
+                </div>
+                <div class="modal-body"><span id="lint-text"></span></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
 </body>
 
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

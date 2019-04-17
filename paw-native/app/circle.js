@@ -79,15 +79,22 @@ function waterfall(parent, data) {
         let oBtn_1 = document.createElement('button')
         oBtn_1.className = 'btn btn-default'
         oBtn_1.id = data[i].article_id
+        if (data[i].article_label) {
+            oBtn_1.label = data[i].article_label
+        } else {
+            oBtn_1.label = null
+        }
         oBtn_1.addEventListener('click', (e) => {
             let ID = e.target.id
-            console.info('点赞 ID:' + ID)
+            let label = e.target.label
+            console.log(ID, label)
             $.ajax({
                 type: 'POST',
                 url: 'http://localhost:8081/handle',
                 data: {
                     'handler': 'Pop',
-                    'id': ID
+                    'id': ID,
+                    'label': label
                 },
                 dataType: 'json',
                 success: (result) => {
@@ -122,7 +129,28 @@ function waterfall(parent, data) {
 }
 
 function getInfo() {
-
+    let parent = document.getElementById('container')
+    let data = new Array()
+    $.ajax({
+        type: 'GET',
+        url: 'http://localhost:8081/trends',
+        // xhrFields: {
+        //     withCredentials: true
+        // },
+        success: (result) => {
+            if (result.code == 1) {
+                data = result.data
+                console.log(data)
+                $('#container').empty()
+                waterfall(parent, data)
+            } else {
+                console.log(result)
+            }
+        },
+        error: (err) => {
+            console.log(err)
+        }
+    })
 }
 /* ************************************************** */
 let username
@@ -151,27 +179,7 @@ $(document).ready(() => {
 })
 
 window.onload = () => {
-    let parent = document.getElementById('container')
-    let data = new Array()
-    $.ajax({
-        type: 'GET',
-        url: 'http://localhost:8081/trends',
-        // xhrFields: {
-        //     withCredentials: true
-        // },
-        success: (result) => {
-            if (result.code == 1) {
-                data = result.data
-                console.log(data)
-                waterfall(parent, data)
-            } else {
-                console.log(result)
-            }
-        },
-        error: (err) => {
-            console.log(err)
-        }
-    })
+    getInfo()
 }
 /* ************************************************** */
 // $('body').on('touchmove', (e) => {
@@ -181,4 +189,50 @@ window.onload = () => {
 $('#btn-tab-discover').on('click', (e) => {
     console.info('发现')
     window.location.href = "discover.html"
+})
+
+$('#shareofmine').on('click', (e) => {
+    console.info('分享')
+    $('#shareModal').modal('show')
+})
+
+$('#submit').on('click', (e) => {
+    console.info('分享发布')
+    let title = $('#article-title').val()
+    let label = $('#article-label').val()
+    let text = $('#article-content').val()
+    if (label && title && text) {
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:8081/handle',
+            data: {
+                'handler': 'addTrend',
+                'title': title,
+                'animal': label,
+                'text': text,
+            },
+            dataType: 'json',
+            // xhrFields: {
+            //     withCredentials: true
+            // },
+            success: (result) => {
+                if (result.code == 1) {
+                    console.log(result.index.insertId)
+                    $('#shareModal').modal('hide')
+                    $('#lint-text').text('发布成功！')
+                    $('#lintModal').modal('show')
+                    $('#container').empty()
+                    getInfo()
+                } else {
+                    console.log(result)
+                }
+            },
+            error: (err) => {
+                console.log(err)
+            }
+        })
+    } else {
+        $('#lint-text').text('请勿发布空白信息')
+        $('#lintModal').modal('show')
+    }
 })

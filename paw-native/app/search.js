@@ -78,6 +78,7 @@ $('#btn-search').on('click', (e) => {
         success: (result) => {
             if (result.code == 1) {
                 console.log(result.data)
+                $('#container').empty()
                 waterfall(parent, result.data)
             } else {
                 console.log(result)

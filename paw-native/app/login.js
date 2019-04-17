@@ -23,7 +23,8 @@ $('#btn-login').on('click', (e) => {
             }
         })
     } else {
-        alert('信息不能为空')
+        $('#lint-text').text('信息不能为空')
+        $('#lintModal').modal('show')
     }
 })
 
@@ -51,10 +52,12 @@ $('#btn-signin').on('click', (e) => {
                 }
             })
         } else {
-            alert('前后密码不一致')
+            $('#lint-text').text('前后密码不一致')
+            $('#lintModal').modal('show')
         }
     } else {
-        alert('信息不能为空')
+        $('#lint-text').text('信息不能为空')
+        $('#lintModal').modal('show')
     }
 })
 

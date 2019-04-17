@@ -105,14 +105,24 @@ function mapChange(map, points) {
             position: lnglat,
             content: '<div style="background-color: rgb(255, 255, 255); height: 20px; width: 20px; border: 1px solid rgb(255, 255, 255); border-radius: 12px; box-shadow: rgb(158, 158, 158) 0px 1px 4px; margin: 0px 0 0 0px;"></div><div style="background-color: rgb(82, 150, 243); height: 16px; width: 16px; border: 1px solid rgb(82, 150, 243); border-radius: 15px; box-shadow: rgb(158, 158, 158) 0px 0px 2px; margin: -18px 0 0 2px; "></div>',
             offset: new AMap.Pixel(-15, -15),
-            extData: points[i]['lbs_content']
+            extData: points[i]['lbs_content'],
+            author: points[i]['lbs_author'],
+            title: points[i]['lbs_title'],
+            time: points[i]['lbs_create_time']
         })
         //temp.on('click', markerClick);
         clickListener = AMap.event.addListener(temp, "click", (e) => {
-            console.info(e.lnglat)
+            console.log(e.target.B)
             map.setCenter([e.lnglat.getLng(), e.lnglat.getLat()])
             $('#abstract').text(e.target.getExtData())
             $('#content-container').slideToggle(500)
+            $('#examine').on('click', () => {
+                $('#contentModalLabel').text(e.target.B.title)
+                $('#content-author').text('作者:' + e.target.B.author)
+                $('#content-time').text('时间:' + e.target.B.time)
+                $('#content-content').text('内容:' + e.target.getExtData())
+                $('#contentModal').modal('show')
+            })
             console.info('显示详情')
         })
         markers.push(temp)
@@ -150,7 +160,7 @@ function mapChange(map, points) {
 //新图钉
 function newPin(map, title, text) {
     let center = map.getCenter()
-    if (center) {
+    if (center && title && text) {
         marker = new AMap.Marker({
             icon: "http://a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-red.png",
             position: [center.lng, center.lat],
@@ -174,8 +184,9 @@ function newPin(map, title, text) {
             // },
             success: (result) => {
                 if (result.code == 1) {
-                    console.log(result)
-                    alert('添加成功，第' + result.index.insertId + '个点')
+                    console.log(result.index.insertId)
+                    $('#lint-text').text('发布成功！')
+                    $('#lintModal').modal('show')
                     $('#input-container').slideToggle(500)
                     $('#pin-title').val('')
                     $('#pin-content').val('')
@@ -188,7 +199,8 @@ function newPin(map, title, text) {
             }
         })
     } else {
-        alert('请开启定位权限')
+        $('#lint-text').text('请勿发布空白信息')
+        $('#lintModal').modal('show')
     }
 }
 
@@ -373,10 +385,10 @@ $('#refresh').on('click', (e) => {
 })
 
 
-$('#examine').on('click', (e) => {
-    $('#content').fadeToggle(500)
-    console.info('查看详情')
-})
+// $('#examine').on('click', (e) => {
+//     $('#content').fadeToggle(500)
+//     console.info('查看详情')
+// })
 $('#nointerest').on('click', (e) => {
     $('#content-container').slideToggle(500)
     console.info('不感兴趣')

@@ -67,8 +67,8 @@
             <div id="input-container" class="bg-blue fixed-bottom">
                 <div id="content-group">
                     <div id="input-group">
-                        <input id="pin-title" placeholder="图钉标题">
-                        <textarea id="pin-content" placeholder="图钉内容"></textarea>
+                        <input id="pin-title" type="text" class="form-control" placeholder="标题">
+                        <textarea id="pin-content" class="form-control" placeholder="你发现的内容"></textarea>
                     </div>
                     <button id="publish" type="button" class="btn">立即发布</button>
                     <button id="wait" type="button" class="btn">等下看看</button>
@@ -76,6 +76,26 @@
             </div>
         </div>
     </footer>
+
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="contentModal" tabindex="-1" role="dialog" aria-labelledby="contentModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="contentModalLabel">详情</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="content-author"></p>
+                    <p id="content-time"></p>
+                    <p id="content-content"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
 
     <!-- 模态框（Modal） -->
     <div class="modal fade" id="lintModal" tabindex="-1" role="dialog" aria-labelledby="lintModalLabel"

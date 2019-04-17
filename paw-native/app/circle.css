@@ -107,3 +107,15 @@ footer {
     box-shadow: 0 5px 10px gray;
     opacity: 0.8;
 }
+
+.modal-body input,
+select,
+textarea {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+textarea {
+    height: 300px;
+}

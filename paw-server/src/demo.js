@@ -72,6 +72,20 @@ app.get('/', (req, res) => {
     res.send('hello')
 })
 
+app.get('/clear', (req, res) => {
+    let sql = 'UPDATE interest SET inte_cat = 0, inte_dog = 0, inte_bird = 0 WHERE inte_use_if = 1 AND inte_username = "' + se.userName + '"'
+    connection.query(sql, (err, result, fields) => {
+        if (err) {
+            res.sendStatus(500)
+            console.log('[SELECT ERROR]:', err.message)
+        } else {
+            res.json({
+                code: 1
+            })
+        }
+    })
+})
+
 app.post('/sign', (req, res, next) => {
     let username = req.body.username
     let password = req.body.pw
@@ -82,8 +96,16 @@ app.post('/sign', (req, res, next) => {
             res.sendStatus(500)
             console.log('[SELECT ERROR]:', err.message)
         } else {
-            res.json({
-                code: 1
+            let sql_2 = 'INSERT INTO interest (inte_username) VALUES ("' + username + '")'
+            connection.query(sql_2, (err, result, fields) => {
+                if (err) {
+                    res.sendStatus(500)
+                    console.log('[SELECT ERROR]:', err.message)
+                } else {
+                    res.json({
+                        code: 1
+                    })
+                }
             })
         }
     })
@@ -172,15 +194,47 @@ app.post('/pin', (req, res, next) => {
 })
 
 app.get('/trends', (req, res, next) => {
-    let sql = 'SELECT * FROM article WHERE article_use_if = 1'
-    connection.query(sql, (err, result, fields) => {
+    let i_cat = 0
+    let i_dog = 0
+    let i_bird = 0
+    let label = ''
+    let sql_1 = 'SELECT inte_dog,inte_cat,inte_bird FROM interest WHERE inte_use_if = 1 AND inte_username = "' + se.userName + '"'
+    connection.query(sql_1, (err, result, fields) => {
         if (err) {
             res.sendStatus(500)
             console.log('[SELECT ERROR]:', err.message)
         } else {
-            res.json({
-                code: 1,
-                data: result
+            i_cat = result[0].inte_cat
+            i_dog = result[0].inte_dog
+            i_bird = result[0].inte_bird
+
+            console.log(i_cat, i_dog, i_bird)
+            if (i_cat > i_dog && i_cat > i_bird && i_cat > 3) {
+                label = 'cat'
+            } else if (i_dog > i_cat && i_dog > i_bird && i_dog > 3) {
+                label = 'dog'
+            } else if (i_bird > i_cat && i_bird > i_dog && i_bird > 3) {
+                label = 'bird'
+            } else {
+                label = ''
+            }
+
+            let sql_2
+            if (label)
+                sql_2 = 'SELECT * FROM article WHERE article_use_if = 1 AND article_label = "' + label + '" ORDER BY article_id DESC'
+            else
+                sql_2 = 'SELECT * FROM article WHERE article_use_if = 1 ORDER BY article_id DESC'
+
+            connection.query(sql_2, (err, result, fields) => {
+                if (err) {
+                    res.sendStatus(500)
+                    console.log('[SELECT ERROR]:', err.message)
+                } else {
+                    res.json({
+                        code: 1,
+                        data: result
+                    })
+                }
             })
         }
     })
@@ -223,11 +277,26 @@ app.post('/handle', (req, res, next) => {
             }
         })
     } else if (handler == 'addTrend') {
-
+        let title = req.body.title
+        let label = req.body.animal
+        let text = req.body.text
+        let sql = 'INSERT INTO article (article_title,article_author,article_content,article_create_time,article_label) VALUES ("' + title + '","' + se.userName + '","' + text + '","' + getNowFormatDate() + '","' + label + '")'
+        connection.query(sql, (err, result, fields) => {
+            if (err) {
+                res.sendStatus(500)
+                console.log('[SELECT ERROR]:', err.message)
+            } else {
+                res.json({
+                    code: 1,
+                    index: result
+                })
+            }
+        })
     } else if (handler == 'Pop') {
         let id = req.body.id
+        let label = req.body.label
         console.info(id)
-        let sql = 'UPDATE article SET article_pop = article_pop + 1  WHERE article_use_if = 1 AND article_id = "' + id + '"'
+        let sql = 'UPDATE article SET article_pop = article_pop + 1 WHERE article_use_if = 1 AND article_id = "' + id + '"'
         connection.query(sql, (err, result, fields) => {
             if (err) {
                 res.sendStatus(500)
@@ -240,6 +309,8 @@ app.post('/handle', (req, res, next) => {
                         data: ex_result
                     })
                 })
+                let inte_sql = 'UPDATE interest SET inte_' + label + ' = inte_' + label + ' + 1 WHERE inte_use_if = 1 AND inte_username = "' + se.userName + '"'
+                connection.query(inte_sql, (inte_err, inte_result) => {})
             }
         })
     } else if (handler == 'setProfile') {

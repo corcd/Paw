@@ -79,3 +79,21 @@ $('#btn-confirm').on('click', (e) => {
         }
     })
 })
+
+$('#clear').on('click', (e) => {
+    $.ajax({
+        type: 'GET',
+        url: 'http://localhost:8081/clear',
+        // xhrFields: {
+        //     withCredentials: true
+        // },
+        success: (result) => {
+            if (result.code == 1)
+            $('#lint-text').text('兴趣数据初始化')
+            $('#lintModal').modal('show')
+        },
+        error: (err) => {
+            console.log(err)
+        }
+    })
+})

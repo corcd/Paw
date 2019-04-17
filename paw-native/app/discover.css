@@ -149,6 +149,11 @@ nav a {
     z-index: 3;
 }
 
+#input-group {
+    width: 90%;
+    margin: auto;
+}
+
 input {
     width: 90%;
     height: 40px;
