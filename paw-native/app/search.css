@@ -1,0 +1,51 @@
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+    background-color: #212630;
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar {
+    height: 10%;
+    background-color: #212630;
+    z-index: 2;
+}
+
+.navbar input {
+    width: 225px;
+    border: 0;
+    border-radius: 50px;
+}
+
+.container {
+    margin-top: 22%;
+    position: relative;
+    z-index: 1;
+}
+
+.container .card {
+    height: auto;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    border-radius: 15px;
+}
+
+.container .card .card-body {
+    position: relative;
+}
+
+.card-body p {
+    margin: 0;
+}
+
+button {
+    height: 50px;
+    width: 90%;
+    margin: 3px;
+    background-color: #FCFCFC;
+    border: 1px solid #FF9933;
+}

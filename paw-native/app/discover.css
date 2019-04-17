@@ -1,0 +1,167 @@
+html,
+body {
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar {
+    height: 10%;
+    font-style: black;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 2;
+}
+
+
+nav a {
+    font-style: black;
+}
+
+#btn-tab .btn {
+    background-color: #FFB01F;
+}
+
+#map-container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    z-index: 1;
+}
+
+.amap-geo,
+.amap-copyright {
+    display: none;
+}
+
+.amap-icon img {
+    width: 25px;
+    height: 32px;
+}
+
+.marker {
+    position: absolute;
+    top: -20px;
+    right: -118px;
+    color: #fff;
+    padding: 4px 10px;
+    box-shadow: 1px 1px 1px rgba(10, 10, 10, .2);
+    white-space: nowrap;
+    font-size: 12px;
+    font-family: "";
+    background-color: #25A5F7;
+    border-radius: 3px;
+}
+
+
+#content {
+    display: none;
+    position: fixed;
+    top: 10%;
+    width: 100%;
+    height: 70%;
+    z-index: 4;
+    text-align: center；
+}
+
+#content>.card {
+    width: 90%;
+    height: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#control-bar {
+    height: 100px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 4%;
+    z-index: 2;
+    text-align: center；
+}
+
+.container>.card {
+    background-color: #212630;
+    border-radius: 100px;
+    box-shadow: 0 10px 20px gray;
+}
+
+#control-btn {
+    margin: 90%;
+    margin: auto 0;
+}
+
+#control-btn button {
+    margin: 2%;
+    padding: 0;
+    border: none;
+    color: #FFFFFF;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 50px;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+#content-container {
+    display: none;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding-bottom: 20;
+    position: fixed;
+    z-index: 3;
+    background-color: #212630;
+    box-shadow: 0 -10px 50px gray;
+    z-index: 3;
+}
+
+#content-group {
+    text-align: center;
+}
+
+#info-group {
+    text-align: center;
+}
+
+#abstract {
+    margin-top: 2%;
+}
+
+#content-group .btn {
+    width: 90%;
+    margin-bottom: 10px;
+    background-color: #FFB01F;
+}
+
+#input-container {
+    display: none;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding-bottom: 20;
+    position: fixed;
+    z-index: 3;
+    background-color: #212630;
+    box-shadow: 0 -10px 50px gray;
+    z-index: 3;
+}
+
+input {
+    width: 90%;
+    height: 40px;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    border: 0;
+    border-radius: 5px;
+}
+
+textarea {
+    width: 90%;
+    height: 100px;
+    margin-bottom: 2%;
+    border: 0;
+    border-radius: 5px;
+}

@@ -1,0 +1,109 @@
+html,
+body {
+    height: 100%;
+    background-color: #212630;
+}
+
+body::-webkit-scrollbar {
+    width: 0 ! important;
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar {
+    height: 10%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 2;
+}
+
+#btn-tab .btn {
+    background-color: #FFB01F;
+}
+
+.container {
+    margin-top: 17%;
+    position: relative;
+    z-index: 1;
+}
+
+.container .card {
+    height: auto;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    border-radius: 15px;
+}
+
+.container .card .card-body {
+    position: relative;
+}
+
+.card-body .header {
+    position: relative;
+    height: 50px;
+}
+
+.author {
+    position: absolute;
+    left: 0;
+}
+
+.author-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: auto 0;
+    margin-right: 5px;
+}
+
+.trend-date {
+    position: absolute;
+    right: 0;
+}
+
+.card-body .content img {
+    height: 32%;
+    width: 32%;
+    margin: 2px;
+}
+
+.card-body .footer {
+    height: 50px;
+    margin-top: 20px;
+}
+
+.trend-control {
+    position: relative;
+}
+
+.trend-control span {
+    position: absolute;
+    left: 0;
+}
+
+.trend-control .btn-trend {
+    position: absolute;
+    right: 0;
+}
+
+.card button {
+    background-color: #FFB01F;
+}
+
+footer {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#shareofmine {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 4%;
+    border-radius: 50px;
+    box-shadow: 0 5px 10px gray;
+    opacity: 0.8;
+}

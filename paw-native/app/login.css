@@ -1,0 +1,39 @@
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+    background-color: #212630;
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar {
+    height: 10%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 2;
+}
+
+.jumbotron {
+    background-color: #212630
+}
+
+.container {
+    width: 90;
+    margin-top: 20%;
+}
+
+input {
+    height: 50px;
+}
+
+button{
+    background-color: #FFB01F;
+}
+
+#re-password,
+#btn-signin {
+    margin: 0;
+    display: none;
+}

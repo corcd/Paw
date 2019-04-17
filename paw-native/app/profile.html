@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+    <meta content="always" name="referrer">
+    <title>发现</title>
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="profile.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand fixed-top" role="navigation">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a id="btn-back" class="text-light"><span class="glyphicon glyphicon-user"></span> 返回</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="setting.html" class="text-light"><span class="glyphicon glyphicon-user"></span> 设置</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row mx-0 justify-content-center">
+            <div id="info-group" class="text-center fixed-top">
+                <div id="profile">
+                    <img id="profilephoto" src="../assets/32856376.jpeg">
+                    <span>
+                        <h2 id="username" class="text-light"></h2>
+                    </span>
+                </div>
+
+                <div class="group">
+                    <button type="button" class="btn btn-default">个人信息</button>
+                </div>
+                <div class="group">
+                    <button type="button" class="btn btn-default">消息盒子</button>
+                </div>
+                <div class="group">
+                    <button id="recommend-data" type="button" class="btn btn-default">推荐数据</button>
+                </div>
+                <div class="group">
+                    <button id="btn-connect-test" type="button" class="btn btn-default">连接测试</button>
+                </div>
+
+                <div class="group">
+                    <button id="btn-logout" type="button" class="btn btn-danger">退出登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+
+    </footer>
+
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="loginModalLabel">注销</h4>
+                </div>
+                <div class="modal-body">确认注销当前账户吗</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button id="btn-confirm" type="button" class="btn btn-primary">确认</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="testModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="testModalLabel">连接测试</h4>
+                </div>
+                <div class="modal-body"><span id="test-data"></span></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</body>
+
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+</script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+</script>
+<script src="https://cdn.bootcss.com/socket.io/2.2.0/socket.io.js"></script>
+
+<script type="text/javascript" src="profile.js"></script>
+
+
+</html>

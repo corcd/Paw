@@ -1,0 +1,54 @@
+html,
+body {
+    height: 100%;
+    background-color: #212630;
+}
+
+body::-webkit-scrollbar {
+    width: 0 ! important;
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar {
+    height: 10%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 2;
+}
+
+.container {
+    margin-top: 5%;
+}
+
+#info-group {
+    width: 100%;
+    z-index: 1;
+}
+
+#profile {
+    height: 20%;
+    margin-top: 80px;
+    margin-bottom: 60px;
+}
+
+#profilephoto {
+    width: 80px;
+    height: 80px;
+    border: 2px solid white;
+    border-radius: 50%;
+    margin: 20px;
+}
+
+button {
+    height: 50px;
+    width: 90%;
+    margin: 4px;
+    background-color: #FCFCFC;
+    border: 1px solid #FF9933;
+}
+
+#testModal button {
+    width: 100%;
+}
